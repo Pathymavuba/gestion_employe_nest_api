@@ -21,10 +21,29 @@ export class EmployeService {
   async readEmploye() {
     return this.employeModel
       .find({})
+      .populate({ path: 'service', select: 'libelle' })
       .then((employe) => {
         if (employe) {
           return employe;
         } else return 'no employee found';
+      })
+      .catch((err) => console.log(err));
+  }
+
+  /**
+   *
+   * @param {string} id
+   * @returns
+   */
+  //get one employe
+  async readOneEmploye(id: string) {
+    return this.employeModel
+      .findById({ _id: id })
+      .populate({ path: 'service', select: 'libelle' })
+      .then((employe) => {
+        if (employe) {
+          return employe;
+        } else return `no employe with that ${id}`;
       })
       .catch((err) => console.log(err));
   }

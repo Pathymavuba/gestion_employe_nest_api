@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, Res } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Res } from '@nestjs/common';
 import { EmployeService } from './employe.service';
 import { CreateEmployeDto } from './dto/create_employe.dto';
 
@@ -20,5 +20,10 @@ export class EmployeController {
   @Get('employe')
   async readEmploye() {
     return this.employeService.readEmploye();
+  }
+
+  @Get('employe/:id')
+  async readOneEmploye(@Param('id') id: string) {
+    return this.employeService.readOneEmploye(id);
   }
 }
