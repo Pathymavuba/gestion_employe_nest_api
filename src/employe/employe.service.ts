@@ -11,6 +11,11 @@ export class EmployeService {
     private readonly employeModel: Model<EmployeDocument>,
   ) {}
 
+  /**
+   *
+   * @param createEmployeDto
+   * @returns
+   */
   //create a new employee
   createEmploye(createEmployeDto: CreateEmployeDto): Promise<EmployeDocument> {
     const employe = new this.employeModel(createEmployeDto);
@@ -23,7 +28,7 @@ export class EmployeService {
       .find({})
       .populate({ path: 'service', select: 'libelle' })
       .then((employe) => {
-        if (employe) {
+        if (employe.length >= 1) {
           return employe;
         } else return 'no employee found';
       })

@@ -11,6 +11,11 @@ export class ServiceService {
     private readonly serviceModel: Model<ServiceDocument>,
   ) {}
 
+  /**
+   *
+   * @param createServiceDto
+   * @returns
+   */
   //create service
   async createService(
     createServiceDto: CreateServiceDto,
