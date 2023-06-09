@@ -7,7 +7,7 @@ export class Employe {
   @Prop()
   nom: string;
 
-  @Prop()
+  @Prop({ default: 40 })
   age: number;
 
   @Prop({ type: SchemaTypes.ObjectId, ref: 'service' })
